@@ -6,7 +6,7 @@ export const getAnalytics = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      return null;
+      return [];
     }
 
     // Get user from database
@@ -16,7 +16,7 @@ export const getAnalytics = query({
       .unique();
 
     if (!user) {
-      return null;
+      return [];
     }
 
     // Get all user's posts
